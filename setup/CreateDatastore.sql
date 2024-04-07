@@ -1,6 +1,6 @@
-CREATE DATABASE if not exists alain'sbookstore;
+CREATE DATABASE if not exists onlinebookstore;
 
-\c alain'sbookstore
+\c onlinebookstore
 
 CREATE TABLE if not exists books 
   ( 
