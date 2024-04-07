@@ -82,7 +82,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>LION TECH ACADEMY Snapshot Nexus Repository </name>
-	      <url>http://54.158.190.1:8081/repository/dev-snapshot/</url>
+	      <url>http://54.158.190.1:8081/repository/devOps-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
