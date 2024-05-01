@@ -1,12 +1,35 @@
-Pipeline {
-    agent any
-    tools {
-        maven "maven3.9.6"
-    }
+pipeline {
+	agent any
+	tools {
+	    maven "maven3.9.6"
+	    jdk "OracleJDK11"
+	}
 
-    stages {
-        stage('Fetch from SCM') {
-            git branch: 'nel', url: 'https://github.com/alain-github120/liontech-online-library-web-app.git'
+	stages {
+	    stage('Fetch code') {
+            steps {
+               git branch: 'nel', url: 'https://github.com/alain-github120/liontech-online-library-web-app.git'
+            }
+
+	    }
+
+	    stage('Build'){
+	        steps{
+	           sh 'mvn install -DskipTests'
+	        }
+
+	        post {
+	           success {
+	              echo 'Now Archiving it...'
+	              archiveArtifacts artifacts: '**/target/*.war'
+	           }
+	        }
+	    }
+
+	    stage('UNIT TEST') {
+            steps{
+                sh 'mvn test'
+            }
         }
-    }
+	}
 }
