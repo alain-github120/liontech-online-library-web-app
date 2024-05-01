@@ -1,0 +1,28 @@
+Pipeline{
+    agent any
+    tools{
+        maven "maven3.9.6"
+        jdk "OracleJDK11"
+    }
+
+    stages{
+        stage('Fetch From Source code'){
+            steps{
+                git branch: 'nel', url: 'https://github.com/alain-github120/liontech-online-library-web-app.git'
+            }
+        }
+
+        stage('Build'){
+            steps{
+                sh 'mvn install -DskipTests'
+            }
+        }
+
+        
+        stage('UNIT TEST'){
+            steps{
+                sh 'maven test'
+            }
+        }
+    }
+}
